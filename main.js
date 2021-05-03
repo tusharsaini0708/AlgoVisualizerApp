@@ -15,7 +15,7 @@ genArray();
 
 function genArray() {
   for (let i = 0; i < 100; i++) {
-    const random = Math.floor(Math.random() * 200);
+    const random = Math.floor(Math.random() * (200 - 5) + 5);
     height.push(random);
   }
   createDiv();
@@ -25,13 +25,24 @@ const arr = document.querySelectorAll(".element");
 
 sortButton.addEventListener("click", bubbleSort);
 
+function animateWholeArray(i, j) {
+  for (let s = 0; s < 100; s++) {
+    ((s) => {
+      setTimeout(() => {
+        arr[s].style.backgroundColor = "purple";
+      }, 50000 + 10 * s);
+    })(s);
+  }
+}
+
 function bubbleSort() {
-  for (let i = 0; i < 100; i++) {
-    for (let j = 0; j < 99 - i; j++) {
+  let i, j;
+  for (i = 0; i < 100; i++) {
+    for (j = 0; j < 99 - i; j++) {
       ((i, j) => {
         setTimeout(() => {
-          arr[j + 1].style.backgroundColor = "green";
-          arr[j].style.backgroundColor = "green";
+          arr[j + 1].style.backgroundColor = "#C2FF01";
+          arr[j].style.backgroundColor = "#C2FF01";
           if (height[j] > height[j + 1]) {
             let temp = height[j];
             height[j] = height[j + 1];
@@ -52,4 +63,5 @@ function bubbleSort() {
       })(i, j);
     }
   }
+  animateWholeArray(i, j);
 }
