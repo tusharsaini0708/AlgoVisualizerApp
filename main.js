@@ -4,11 +4,12 @@ var sortBubbleButton = document.querySelector(".bubbleSort");
 var generateButton = document.querySelector(".generate");
 
 var created = false;
-var height = new Array(100);
+var arrayLength = 200; //size of array
+var height = new Array(arrayLength);
 
 function createDiv() {
   created = true;
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < height.length; i++) {
     const div = document.createElement("div");
     div.classList.add("element");
     div.style.height = `${(height[i] * 5) / 2}px`;
@@ -18,7 +19,7 @@ function createDiv() {
 
 function sortDiv() {
   duplicate = [...height];
-  for (let i = 0; i < 100; i++)
+  for (let i = 0; i < height.length; i++)
     arr[i].style.height = `${(height[i] * 5) / 2}px`;
 }
 genArray();
@@ -26,8 +27,8 @@ let duplicate = [...height];
 generateButton.addEventListener("click", genArray);
 
 function genArray() {
-  for (let i = 0; i < 100; i++) {
-    const random = Math.floor(Math.random() * (200 - 5) + 5);
+  for (let i = 0; i < arrayLength; i++) {
+    const random = Math.floor(Math.random() * (230 - 5) + 5);
     height[i] = random;
   }
   if (!created) createDiv();
@@ -45,30 +46,37 @@ sortButton.addEventListener("click", () => {
 
 sortBubbleButton.addEventListener("click", () => {
   console.log(height);
-  bubbleSort();
+  counter.count = 0;
+  bubbleSort(counter);
 });
 
-//console.log(height);
+console.log(height);
 
-function animateWholeArray(i, j) {
-  for (let s = 0; s < 100; s++) {
+function animateWholeArray(counter) {
+  for (let s = 0; s < height.length; s++) {
     ((s) => {
       counter.count = counter.count + 1;
       setTimeout(() => {
-        arr[s].style.backgroundColor = "purple";
-      }, 50000 + 10 * s);
+        // arr[s].style.backgroundImage = " linear-gradient(#5c258d,#4389a2)"; selecd
+        // arr[s].style.backgroundImage = " linear-gradient(#1d976c,#93f9b9)"; // final
+        arr[s].style.backgroundImage = " linear-gradient(#1d976c,#2A5044)"; // grand final
+        //arr[s].style.backgroundImage = " linear-gradient(#cc2b5e,#753a88)";
+
+        // arr[s].style.backgroundImage = " linear-gradient(#56ab2f,#a8e063)"; green choice
+      }, 10 * counter.count);
     })(s);
   }
 }
 
-function bubbleSort() {
+function bubbleSort(counter) {
   let i, j;
-  for (i = 0; i < 100; i++) {
-    for (j = 0; j < 99 - i; j++) {
+  for (i = 0; i < height.length; i++) {
+    for (j = 0; j < height.length - 1 - i; j++) {
       ((i, j) => {
+        counter.count = counter.count + 1;
         setTimeout(() => {
-          arr[j + 1].style.backgroundColor = "#C2FF01";
-          arr[j].style.backgroundColor = "#C2FF01";
+          arr[j + 1].style.backgroundImage = "linear-gradient(#F96E26,#F96E26)";
+          arr[j].style.backgroundImage = "linear-gradient(#F96E26,#F96E26)";
           if (height[j] > height[j + 1]) {
             let temp = height[j];
             height[j] = height[j + 1];
@@ -76,22 +84,24 @@ function bubbleSort() {
             arr[j + 1].style.height = `${(height[j + 1] * 5) / 2}px`;
             arr[j].style.height = `${(height[j] * 5) / 2}px`;
           }
-          if (j == 99 - i - 1) {
-            arr[j].style.backgroundColor = "turquoise";
-            arr[j + 1].style.backgroundColor = "turquoise";
+          if (j == height.length - i - 1 - 1) {
+            arr[j].style.backgroundImage = "linear-gradient(#cc2b5e, #753a88)";
+            arr[j + 1].style.backgroundImage =
+              "linear-gradient(#cc2b5e, #753a88)";
           }
 
           if (j != 1 && j != 0) {
-            arr[j - 2].style.backgroundColor = "turquoise";
-            arr[j - 1].style.backgroundColor = "turquoise";
+            arr[j - 2].style.backgroundImage =
+              "linear-gradient(#cc2b5e, #753a88)";
+            arr[j - 1].style.backgroundImage =
+              "linear-gradient(#cc2b5e, #753a88)";
           }
-        }, 500 * i + 5 * j);
+        }, 10 * counter.count);
       })(i, j);
     }
   }
-  //animateWholeArray(i, j);
+  animateWholeArray(counter);
 }
-var some = [4, 2, 5, 3, 8, 6, 9, 1];
 
 function mergeSort(i, j) {
   let mid = Math.floor((i + j) / 2);
@@ -99,6 +109,7 @@ function mergeSort(i, j) {
     mergeSort(i, mid);
     mergeSort(mid + 1, j);
     merge(i, mid, j, counter);
+    if (i == 0 && j == height.length - 1) animateWholeArray(counter);
   }
 }
 
@@ -117,8 +128,8 @@ function merge(i, mid, j, counter) {
         //   arr[index2 - 1].style.backgroundColor = "turquoise";
         // }
 
-        arr[index1].style.backgroundColor = "yellow";
-        arr[index2].style.backgroundColor = "yellow";
+        arr[index1].style.backgroundImage = "linear-gradient(#F96E26,#F96E26)";
+        arr[index2].style.backgroundImage = "linear-gradient(#F96E26,#F96E26)";
         if (height[index1] < height[index2]) {
           temp.push(height[index1]);
         } else {
@@ -161,7 +172,7 @@ function merge(i, mid, j, counter) {
       counter.count = counter.count + 1;
       setTimeout(() => {
         height[i + k] = temp[k];
-        arr[i + k].style.backgroundColor = "turquoise";
+        arr[i + k].style.backgroundImage = "linear-gradient(#cc2b5e, #753a88)";
         //arr[index2].style.backgroundColor = "turquoise";
         arr[i + k].style.height = `${(height[i + k] * 5) / 2}px`;
         //original array height change
