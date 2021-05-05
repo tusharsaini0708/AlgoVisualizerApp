@@ -43,9 +43,7 @@ sortButton.addEventListener("click", () => {
   mergeSort(0, height.length - 1);
 });
 
-sortBubbleButton.addEventListener("click", () => {
-  bubbleSort();
-});
+sortBubbleButton.addEventListener("click", bubbleSort);
 
 console.log(height);
 
