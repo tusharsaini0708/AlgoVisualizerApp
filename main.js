@@ -1,6 +1,8 @@
 var container = document.querySelector(".container");
 var sortButton = document.querySelector(".sort");
+var sortBubbleButton = document.querySelector(".bubbleSort");
 var generateButton = document.querySelector(".generate");
+
 var created = false;
 var height = new Array(100);
 
@@ -39,6 +41,10 @@ let counter = { count: 0 };
 sortButton.addEventListener("click", () => {
   counter.count = 0;
   mergeSort(0, height.length - 1);
+});
+
+sortBubbleButton.addEventListener("click", () => {
+  bubbleSort();
 });
 
 console.log(height);
