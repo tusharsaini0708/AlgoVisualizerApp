@@ -43,9 +43,12 @@ sortButton.addEventListener("click", () => {
   mergeSort(0, height.length - 1);
 });
 
-sortBubbleButton.addEventListener("click", bubbleSort);
+sortBubbleButton.addEventListener("click", () => {
+  console.log(height);
+  bubbleSort();
+});
 
-console.log(height);
+//console.log(height);
 
 function animateWholeArray(i, j) {
   for (let s = 0; s < 100; s++) {
@@ -86,7 +89,7 @@ function bubbleSort() {
       })(i, j);
     }
   }
-  animateWholeArray(i, j);
+  //animateWholeArray(i, j);
 }
 var some = [4, 2, 5, 3, 8, 6, 9, 1];
 
