@@ -14,12 +14,19 @@
     <title>Algo Visualizer</title>
   </head>
   <body>
-    <div class="container"></div>
-    <div>
-      <button class="sort">Sort</button>
-      <button class="bubbleSort">BubbleSort</button>
-      <button class="generate">GenerateRandomArray</button>
-    </div>
+    <div
+      class="container p-0 d-flex align-items-end mb-3"
+      style="height: 500px"
+    ></div>
+    <button class="mergeSort btn">MergeSort</button>
+    <button class="quickSort btn">QuickSort</button>
+    <button class="bubbleSort btn">BubbleSort</button>
+    <button class="generate btn">GenerateArray</button>
+    <br />
+    <label for="speed" class="text-light">Speed</label>
+    <input type="range" name="speed" class="speed" min="70" max="100" />
+    <label for="arraySize" class="text-light">Size</label>
+    <input type="range" name="arraySize" class="arraySize" min="50" max="300" />
 
     <script src="main.js"></script>
     <script
