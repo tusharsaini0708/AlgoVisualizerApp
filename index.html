@@ -10,25 +10,89 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Algo Visualizer</title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#"
+        >Algo Visualizer<i
+          class="ml-2 fas fa-sort-amount-down-alt fa-rotate-270"
+        ></i>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse justify-content-between"
+        id="navbarNav"
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <label for="speed" class="text-light">Speed</label>
+            <input type="range" name="speed" class="speed" min="70" max="100" />
+          </li>
+          <li class="nav-item">
+            <label for="arraySize" class="ml-3 text-light">Size</label>
+            <input
+              type="range"
+              name="arraySize"
+              class="arraySize"
+              min="50"
+              max="300"
+            />
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <button class="btn bubbleSort">BubbleSort</button>
+          </li>
+          <li class="nav-item">
+            <button class="btn insertionSort">InsertionSort</button>
+          </li>
+          <li class="nav-item">
+            <button class="btn mergeSort">MergeSort</button>
+          </li>
+          <li class="nav-item">
+            <button class="btn quickSort">QuickSort</button>
+          </li>
+          <li class="nav-item">
+            <button class="btn generate">GenerateArray</button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- <button class="mergeSort btn" disabled>MergeSort</button>
+    <button class="quickSort btn">QuickSort</button>
+    <button class="bubbleSort btn">BubbleSort</button>
+    <button class="insertionSort btn">InsertionSort</button>
+    <button class="generate btn">GenerateArray</button> -->
+    <!-- <br />
+    <label for="speed" class="text-light">Speed</label>
+    <input type="range" name="speed" class="speed" min="70" max="100" />
+    <label for="arraySize" class="text-light">Size</label>
+    <input type="range" name="arraySize" class="arraySize" min="50" max="300" /> -->
     <div
       class="container p-0 d-flex align-items-end mb-3"
       style="height: 500px"
     ></div>
-    <button class="mergeSort btn">MergeSort</button>
-    <button class="quickSort btn">QuickSort</button>
-    <button class="bubbleSort btn">BubbleSort</button>
-    <button class="generate btn">GenerateArray</button>
-    <br />
-    <label for="speed" class="text-light">Speed</label>
-    <input type="range" name="speed" class="speed" min="70" max="100" />
-    <label for="arraySize" class="text-light">Size</label>
-    <input type="range" name="arraySize" class="arraySize" min="50" max="300" />
 
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
